@@ -1,4 +1,5 @@
-import { Modal, Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import { Modal, View, StyleSheet } from "react-native";
+import TodoForm from "./TodoForm";
 
 export default function AddTodoModal({ handleModalClose, modal }) {
   return (
@@ -10,10 +11,7 @@ export default function AddTodoModal({ handleModalClose, modal }) {
     >
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
-          <Text style={{ color: "white" }}>Hello From the Modal</Text>
-          <TouchableOpacity onPress={handleModalClose}>
-            <Text style={{ color: "red", marginTop: 10 }}>Close Modal</Text>
-          </TouchableOpacity>
+          <TodoForm onClose={handleModalClose} />
         </View>
       </View>
     </Modal>
@@ -24,11 +22,11 @@ const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
     justifyContent: "flex-end",
-    backgroundColor: "rgba(0,0,0,0.6)",
+    backgroundColor: "rgba(0,0,0,0.2)",
   },
   modalContent: {
     backgroundColor: "white",
-    height: "70%",
+    height: "60%",
     width: "100%",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,

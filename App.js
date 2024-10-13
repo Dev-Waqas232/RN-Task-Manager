@@ -8,25 +8,23 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <>
-      <SafeAreaView style={{ flex: 1 }}>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerTitleAlign: "center",
+    <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerTitleAlign: "center",
+          }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              title: "Task Manager",
             }}
-          >
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{
-                title: "Task Manager",
-              }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaView>
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
       <StatusBar barStyle="dark-content" />
-    </>
+    </SafeAreaView>
   );
 }

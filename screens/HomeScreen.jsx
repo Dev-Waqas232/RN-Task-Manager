@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 20,
     right: 20,
+    elevation: 10,
+    borderWidth: 2,
+    borderColor: "#d1760f",
   },
   btnText: {
     fontSize: 28,

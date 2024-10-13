@@ -35,6 +35,7 @@ export default function TodoForm({ onClose, onAdd }) {
       date: date,
     };
     onAdd(todo);
+    setShow(false);
   };
 
   return (

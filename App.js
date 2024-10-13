@@ -1,55 +1,32 @@
-import { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./screens/HomeScreen";
 import { SafeAreaView } from "react-native-safe-area-context";
-import AddTodoModal from "./components/AddTodoModal";
+import { StatusBar } from "react-native";
 
 export default function App() {
-  const [modal, setModal] = useState(false);
-
-  const handleModalOpen = () => {
-    setModal(true);
-  };
-
-  const handleModalClose = () => {
-    setModal(false);
-  };
+  const Stack = createNativeStackNavigator();
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#d1760f" }}>
-      <Text>Let's Work!</Text>
-
-      <AddTodoModal modal={modal} handleModalClose={handleModalClose} />
-      <TouchableOpacity
-        style={styles.btn}
-        activeOpacity={0.7}
-        onPress={handleModalOpen}
-      >
-        <Text style={styles.btnText}>+</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <>
+      <SafeAreaView style={{ flex: 1 }}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerTitleAlign: "center",
+            }}
+          >
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{
+                title: "Task Manager",
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+      <StatusBar barStyle="dark-content" />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  btn: {
-    width: 60,
-    height: 60,
-    borderRadius: 100,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    position: "absolute",
-    bottom: 20,
-    right: 20,
-  },
-  btnText: {
-    fontSize: 28,
-    color: "white",
-    color: "#d1760f",
-  },
-});

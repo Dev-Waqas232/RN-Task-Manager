@@ -10,8 +10,9 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { Dropdown } from "react-native-element-dropdown";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-export default function TodoForm({ onClose }) {
+export default function TodoForm({ onClose, onAdd }) {
   const [category, setCategory] = useState("");
+  const [title, setTitle] = useState("");
   const [date, setDate] = useState(null);
   const [show, setShow] = useState(false);
 
@@ -24,6 +25,16 @@ export default function TodoForm({ onClose }) {
 
   const showDatepicker = () => {
     setShow(true);
+  };
+
+  const handleAddTodo = () => {
+    const todo = {
+      id: Math.random(),
+      title: title,
+      category: category,
+      date: date,
+    };
+    onAdd(todo);
   };
 
   return (
@@ -40,7 +51,14 @@ export default function TodoForm({ onClose }) {
       </View>
       <View style={styles.formBody}>
         <Text style={styles.inputLabel}>Title</Text>
-        <TextInput style={styles.input} keyboardType="default" />
+        <TextInput
+          style={styles.input}
+          keyboardType="default"
+          value={title}
+          onChangeText={(value) => {
+            setTitle(value);
+          }}
+        />
         <Text style={styles.inputLabel}>Category</Text>
         <Dropdown
           style={styles.dropDown}
@@ -76,7 +94,7 @@ export default function TodoForm({ onClose }) {
             onChange={onChange}
           />
         )}
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={handleAddTodo}>
           <Text style={styles.btnText}>Add Task</Text>
         </TouchableOpacity>
       </View>

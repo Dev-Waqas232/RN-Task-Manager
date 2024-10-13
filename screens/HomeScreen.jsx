@@ -2,9 +2,11 @@ import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import AddTodoModal from "../components/AddTodoModal";
+import TodoList from "../components/TodoList";
 
 export default function HomeScreen() {
   const [modal, setModal] = useState(false);
+  const [todos, setTodos] = useState([]);
 
   const handleModalOpen = () => {
     setModal(true);
@@ -14,11 +16,19 @@ export default function HomeScreen() {
     setModal(false);
   };
 
+  const addTodo = (todo) => {
+    setTodos((prevState) => [todo, ...prevState]);
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "#d1760f" }}>
-      <Text>Let's Work!</Text>
+      <TodoList todos={todos} />
 
-      <AddTodoModal modal={modal} handleModalClose={handleModalClose} />
+      <AddTodoModal
+        modal={modal}
+        handleModalClose={handleModalClose}
+        onAdd={addTodo}
+      />
       <TouchableOpacity
         style={styles.btn}
         activeOpacity={0.7}

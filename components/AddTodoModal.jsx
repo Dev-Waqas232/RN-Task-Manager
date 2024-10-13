@@ -1,7 +1,7 @@
 import { Modal, View, StyleSheet } from "react-native";
 import TodoForm from "./TodoForm";
 
-export default function AddTodoModal({ handleModalClose, modal }) {
+export default function AddTodoModal({ handleModalClose, modal, onAdd }) {
   return (
     <Modal
       transparent={true}
@@ -11,7 +11,7 @@ export default function AddTodoModal({ handleModalClose, modal }) {
     >
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
-          <TodoForm onClose={handleModalClose} />
+          <TodoForm onClose={handleModalClose} onAdd={onAdd} />
         </View>
       </View>
     </Modal>

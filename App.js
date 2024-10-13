@@ -16,7 +16,7 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#d1760f" }}>
       <Text>Let's Work!</Text>
 
       <AddTodoModal modal={modal} handleModalClose={handleModalClose} />
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#d1760f",
+    backgroundColor: "white",
     position: "absolute",
     bottom: 20,
     right: 20,
@@ -50,5 +50,6 @@ const styles = StyleSheet.create({
   btnText: {
     fontSize: 28,
     color: "white",
+    color: "#d1760f",
   },
 });

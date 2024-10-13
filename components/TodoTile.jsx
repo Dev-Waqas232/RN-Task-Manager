@@ -39,7 +39,7 @@ export default function TodoTile({ todo }) {
       <View style={{ alignSelf: "flex-start" }}>
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 10,
             textTransform: "capitalize",
             color: colors.color,
             backgroundColor: colors.bg,
@@ -57,6 +57,7 @@ export default function TodoTile({ todo }) {
         style={{
           fontSize: 12,
           color: "#807e7e",
+          lineHeight: 12,
         }}
       >
         Due Date : {formatDate(todo.date)}
@@ -76,5 +77,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "600",
     fontSize: 16,
+    lineHeight: 25,
   },
 });
